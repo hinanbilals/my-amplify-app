@@ -10,6 +10,7 @@ const logout = () => {
     if (user) {
         console.log(user);
         user.signOut();
+        
     }
   };
 

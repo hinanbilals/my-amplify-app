@@ -10,6 +10,7 @@ const [password, setPassword] = useState("");
 const [email, setEmail] = useState("");
 const [otp, setOtp] = useState("");
 const [enableOtp, setEnableOtp] = useState("");
+const [showLoginInstruction, setshowLoginInstruction] = useState(false);
 
     
 const confirmOTP = (event) => {
@@ -25,7 +26,7 @@ const confirmOTP = (event) => {
         if (err) {
         console.log('error', err.message);
         }
-        
+        setshowLoginInstruction(true);
         console.log('call result: ' + JSON.stringify(result));
        });
 
@@ -53,7 +54,8 @@ UserPool.signUp(username, password,attributeList, null, (err, data)=>{
 return (
 <div>
 <h1>Signup Page</h1>
-
+<br></br>
+{ showLoginInstruction == true ? (<><p>Signup Success, Please login</p></>): (<></>) }
 <form onSubmit={onSubmit}>
     
 Email:    
