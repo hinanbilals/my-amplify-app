@@ -14,6 +14,7 @@ const logout = () => {
     if (user) {
         console.log(user); 
         user.signOut();
+        setshowDashboard(false);
     }
   };
 
@@ -50,7 +51,6 @@ return (
 { showDashboard === false ?
 (<><h1>Signin Page</h1>
 
-<button onClick={logout}>Logout</button>
 <form onSubmit={onSubmit}>
 Username:
 <input value={username} onChange={(event) => setUsername(event.target.value)}/>  
@@ -60,7 +60,9 @@ Password:
 </form>
 </>):
 
-(<><Dashboard></Dashboard></>)
+(<>
+    <button onClick={logout}>Logout</button>
+    <Dashboard></Dashboard></>)
 }
 </div>
 );
